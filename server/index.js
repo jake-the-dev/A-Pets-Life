@@ -9,11 +9,11 @@ import postRoutes from "./routes/posts.js";
 const app = express();
 dotenv.config();
 
-app.use("/posts", postRoutes);
-
-app.use(bodyParser.json({ limit: "30mb", extended: true }));
+app.use(bodyParser.json({ limit: "30mb", extended: true })); // bodyParser is now a part of express, again.
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
+
+app.use("/posts", postRoutes);
 
 const ATLAS_CONNECTION = process.env.ATLAS_CONNECTION;
 
