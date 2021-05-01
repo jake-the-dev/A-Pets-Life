@@ -11,12 +11,18 @@ const Collection = () => {
 
   console.log(collection);
 
-  return (
-    <>
-      <h1>Collection of Memories</h1>
-      <Memory />
-      <Memory />
-    </>
+  // if the collection is empty then display waiting symbol
+  // else map the collection with the structure of memory
+  return !collection.length ? (
+    <CircularProgress />
+  ) : (
+    <Grid className={classes.container} container alignitems="stretch">
+      {collection.map((memory) => (
+        <Grid key={memory._id} item xs={12} sm={6}>
+          <Memory memory={memory} />
+        </Grid>
+      ))}
+    </Grid>
   );
 };
 
