@@ -1,5 +1,6 @@
 import axios from "axios";
 
-const url = "http://localhost:5000/posts";
+const url = "http://localhost:5000/posts"; // collection
 
-export const fetchPosts = () => axios.get(url);
+export const fetchCollection = () => axios.get(url);
+export const createMemory = (newMemory) => axios.post(url, newMemory);

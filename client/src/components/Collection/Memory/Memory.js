@@ -1,10 +1,10 @@
 import React from "react";
 import useStyles from "./styles";
 
-const Post = () => {
+const Memory = () => {
   const classes = useStyles();
 
-  return <h1>POST</h1>;
+  return <h1>Memory</h1>;
 };
 
-export default Post;
+export default Memory;

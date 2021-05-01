@@ -2,9 +2,9 @@ import React, { useEffect } from "react";
 import { Container, AppBar, Typography, Grow, Grid } from "@material-ui/core";
 import { useDispatch } from "react-redux"; // triggers a redux action
 
-import { getPosts } from "./actions/posts";
+import { getCollection } from "./actions/collection";
 import PetsIcon from "@material-ui/icons/Pets";
-import Posts from "./components/Posts/Posts";
+import Collection from "./components/Collection/Collection";
 import Form from "./components/Form/Form";
 import useStyles from "./styles";
 
@@ -13,7 +13,7 @@ const App = () => {
   const dispatch = useDispatch(); // A hook to access the redux dispatch function.
 
   useEffect(() => {
-    dispatch(getPosts());
+    dispatch(getCollection());
   }, [dispatch]); // Why is this required? React Hook useEffect has a missing dependency: 'dispatch'. Either include it or remove the dependency array.
 
   return (
@@ -29,14 +29,14 @@ const App = () => {
           <Grid
             container
             justify="space-between"
-            alignItems="stretch"
+            alignItems="center"
             spacing={3}
           >
-            <Grid item xs={12} sm={7}>
-              <Posts />
-            </Grid>
-            <Grid item xs={12} sm={4}>
+            <Grid item xs={12} sm={12}>
               <Form />
+            </Grid>
+            <Grid item xs={12} sm={12}>
+              <Collection />
             </Grid>
           </Grid>
         </Container>
