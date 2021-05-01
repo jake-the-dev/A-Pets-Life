@@ -31,9 +31,9 @@ dotenv files for secure credentials
 MondoDB Atlas and Compass are both the same for viewing db data. 
 router.get('/', (req,res)) vs router.route("/").get((req, res)
 Todo tree from the marketplace
-The precision of capitalisation of db fields. 
-That I don't really care for Bootstrap / react-bootstrap's implementation.
-JSX Fragments.
+The precision of capitalisation of db fields. Couple hours of frustration there.
+That I don't really care for Bootstrap / react-bootstrap's jsx implementation.
+JSX Fragments as a parent to use multiple .
 Redux is easier to understand and use with React Hooks now a thing.
 Redux creates a lot more files and folders but that's a small price when trying to understand state. 
 A thunk is a function that wraps an expression to delay its evaluation. (allows async await)

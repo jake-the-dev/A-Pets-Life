@@ -1,11 +1,20 @@
 import React, { useState } from "react";
-import { TextField, Button, Typography, Paper } from "@material-ui/core";
-// import FileBase from "react-file-base64"; // TODO conflicts with npm packages
+import {
+  TextField,
+  Button,
+  Typography,
+  Paper,
+  Container,
+} from "@material-ui/core";
+import FileBase from "react-file-base64";
+import { useDispatch } from "react-redux";
+// import ImageIcon from "@material-ui/icons/Image";
 
 import useStyles from "./styles";
+import { createMemory } from "../../actions/collection";
 
 const Form = () => {
-  const [postData, setPostData] = useState({
+  const [memoryData, setMemoryData] = useState({
     creator: "",
     title: "",
     message: "",
@@ -14,13 +23,20 @@ const Form = () => {
   });
   const classes = useStyles();
 
-  const handleSubmit = () => {}; // function from previous projects
+  const dispatch = useDispatch();
 
+  // take the form data and trigger a dispatch to the POST api
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    dispatch(createMemory(memoryData));
+  };
   const clear = () => {};
-  // for each field use a spread operator of the state so the data will persist on change while only changing only that specific field.
 
+  // for each field use a spread operator of the state so the data will persist on change while only changing only last property of specific field.
+  // still need to figure out how to upload images from local storage. Done
   return (
-    <Paper className={classes.paper}>
+    <Container>
       <form
         autoComplete="off"
         noValidate
@@ -33,9 +49,9 @@ const Form = () => {
           variant="outlined"
           label="Creator"
           fullWidth
-          value={postData.creator}
+          value={memoryData.creator}
           onChange={(event) =>
-            setPostData({ ...postData, creator: event.target.value })
+            setMemoryData({ ...memoryData, creator: event.target.value })
           }
         />
         <TextField
@@ -43,9 +59,9 @@ const Form = () => {
           variant="outlined"
           label="Title"
           fullWidth
-          value={postData.title}
+          value={memoryData.title}
           onChange={(event) =>
-            setPostData({ ...postData, title: event.target.value })
+            setMemoryData({ ...memoryData, title: event.target.value })
           }
         />
         <TextField
@@ -53,9 +69,9 @@ const Form = () => {
           variant="outlined"
           label="Message"
           fullWidth
-          value={postData.message}
+          value={memoryData.message}
           onChange={(event) =>
-            setPostData({ ...postData, message: event.target.value })
+            setMemoryData({ ...memoryData, message: event.target.value })
           }
         />
         <TextField
@@ -63,21 +79,21 @@ const Form = () => {
           variant="outlined"
           label="Tags"
           fullWidth
-          value={postData.tags}
+          value={memoryData.tags}
           onChange={(event) =>
-            setPostData({ ...postData, tags: event.target.value })
+            setMemoryData({ ...memoryData, tags: event.target.value })
           }
         />
-        <TextField
-          name="imageUpload"
-          variant="outlined"
-          label="Image Upload TODO"
-          fullWidth
-          value={postData.imageUpload}
-          onChange={(event) =>
-            setPostData({ ...postData, imageUpload: event.target.value })
-          }
-        />
+        <div className={classes.fileInput}>
+          <FileBase
+            name="selectedFile"
+            type="file"
+            multiple={false}
+            onDone={({ selectedImage }) =>
+              setMemoryData({ ...memoryData, selectedFile: selectedImage })
+            }
+          />
+        </div>
         <Button
           className={classes.buttonSubmit}
           variant="contained"
@@ -98,7 +114,7 @@ const Form = () => {
           Clear
         </Button>
       </form>
-    </Paper>
+    </Container>
   );
 };
 
