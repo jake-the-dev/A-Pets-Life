@@ -9,12 +9,14 @@ import {
 } from "@material-ui/core";
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
-
 import useStyles from "./styles";
+import { useDispatch } from "react-redux";
+import { deleteMemory } from "../../../actions/collection";
 
 // take memory from props and display the data into a Card format.
 const Memory = ({ memory, setCurrentId }) => {
   const classes = useStyles();
+  const dispatch = useDispatch();
 
   // created date was going to be a fromNow() using moment - but I went against it after reading their docs.
 
@@ -45,15 +47,19 @@ const Memory = ({ memory, setCurrentId }) => {
           {memory.title}
         </Typography>
         <CardContent>
-          <Typography variant="h5" gutterBottom>
+          <Typography variant="body2" color="textSecondary" component="p">
             {memory.message}
           </Typography>
         </CardContent>
         <CardActions className={classes.cardActions}>
           <Typography variant="body2">
-            {new Date(memory.createdAt).toLocaleString()}()
+            {new Date(memory.createdAt).toLocaleString()}
           </Typography>
-          <Button size="small" color="primary" onClick={() => {}}>
+          <Button
+            size="small"
+            color="primary"
+            onClick={() => dispatch(deleteMemory(memory._id))}
+          >
             <DeleteIcon fontSize="small" />
             Delete
           </Button>

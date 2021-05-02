@@ -14,6 +14,8 @@ export default (collectionState = [], action) => {
           ? action.payload
           : collectionState
       );
+    case "DELETE":
+      return collectionState.filter((memory) => memory._id !== action.payload); // keep all of the payload but filter out the memory to delete
     default:
       return collectionState;
   }

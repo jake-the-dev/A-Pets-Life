@@ -107,7 +107,10 @@ const Form = ({ currentId, setCurrentId }) => {
           fullWidth
           value={memoryData.tags}
           onChange={(event) =>
-            setMemoryData({ ...memoryData, tags: event.target.value })
+            setMemoryData({
+              ...memoryData,
+              tags: event.target.value.split(","),
+            })
           }
         />
         <div className={classes.fileInput}>

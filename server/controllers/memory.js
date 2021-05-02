@@ -8,6 +8,8 @@ export const getCollection = async (req, res) => {
 
     console.log(memoryMessages);
 
+    console.log("GET all");
+
     res.status(200).json(memoryMessages);
   } catch (error) {
     res.status(404).json({ message: error });
@@ -19,6 +21,8 @@ export const getMemory = async (req, res) => {
 
   try {
     const memory = await MemoryMessage.findById(id);
+
+    console.log("GET by ID");
 
     res.status(200).json(memory);
   } catch (error) {
@@ -33,6 +37,8 @@ export const createMemory = async (req, res) => {
 
   try {
     await newMemory.save();
+
+    console.log("CREATE");
 
     res.status(201).json(newMemory);
   } catch (error) {
@@ -57,5 +63,20 @@ export const updateMemory = async (req, res) => {
     }
   );
 
+  console.log("UPDATE");
+
   res.json(updatedMemory);
+};
+
+export const deleteMemory = async (req, res) => {
+  const { id } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(id))
+    return res.status(404).send(`That ID does not exist`);
+
+  await MemoryMessage.findByIdAndDelete(id);
+
+  console.log("DELETE");
+
+  res.json({ message: "Memory forgotten" });
 };

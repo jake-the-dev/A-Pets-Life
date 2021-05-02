@@ -1,5 +1,5 @@
 // types of actions that can affect the state
-import * as api from "../api"; // so axios can use api.fetchPosts
+import * as api from "../api"; // so axios can use api.fetchCollection
 
 //action creators
 // it takes time to retrive the data, so we use thunk for async functionality
@@ -11,9 +11,6 @@ export const getCollection = () => async (dispatch) => {
     console.log(error);
   }
 };
-
-// why is this not exporting
-// answer: had an extra arrow function.
 
 export const createMemory = (memory) => async (dispatch) => {
   try {
@@ -29,6 +26,16 @@ export const updateMemory = (id, memory) => async (dispatch) => {
     const { data } = await api.updateMemory(id, memory);
 
     dispatch({ type: "UPDATE", payload: data });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const deleteMemory = (id) => async (dispatch) => {
+  try {
+    await api.deleteMemory(id);
+
+    dispatch({ type: "DELETE", payload: id });
   } catch (error) {
     console.log(error);
   }
