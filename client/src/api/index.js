@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const url = "http://localhost:5000/memory"; // collection
+const url = "https://a-pets-life-server.herokuapp.com/memory"; // collection
 
 export const fetchCollection = () => axios.get(url);
 export const createMemory = (newMemory) => axios.post(url, newMemory);
