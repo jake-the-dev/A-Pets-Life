@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import Memory from "./Memory/Memory";
 import useStyles from "./styles";
 
-const Collection = () => {
+const Collection = ({ setCurrentId }) => {
   const collection = useSelector((state) => state.collection); // state.collection is from /reducers combineReducers
   const classes = useStyles();
 
@@ -19,7 +19,7 @@ const Collection = () => {
     <Grid className={classes.container} container alignitems="stretch">
       {collection.map((memory) => (
         <Grid key={memory._id} item xs={12} sm={6}>
-          <Memory memory={memory} />
+          <Memory memory={memory} setCurrentId={setCurrentId} />
         </Grid>
       ))}
     </Grid>
