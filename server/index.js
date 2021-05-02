@@ -16,7 +16,6 @@ app.use(cors());
 app.use("/memory", memoryRoutes);
 
 const ATLAS_CONNECTION = process.env.ATLAS_CONNECTION;
-
 const PORT = process.env.PORT || 5000;
 
 mongoose
