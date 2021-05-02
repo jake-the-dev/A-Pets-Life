@@ -8,7 +8,7 @@ export const getCollection = () => async (dispatch) => {
     const { data } = await api.fetchCollection(); // this is creating a get request to the api
     dispatch({ type: "FETCH_ALL", payload: data });
   } catch (error) {
-    console.log(error.message);
+    console.log(error);
   }
 };
 
@@ -20,6 +20,16 @@ export const createMemory = (memory) => async (dispatch) => {
     const { data } = await api.createMemory(memory); // this is creating a POST request sending "memory" data
     dispatch({ type: "CREATE", payload: data });
   } catch (error) {
-    console.log(error.message);
+    console.log(error);
+  }
+};
+
+export const updateMemory = (id, memory) => async (dispatch) => {
+  try {
+    const { data } = await api.updateMemory(id, memory);
+
+    dispatch({ type: "UPDATE", payload: data });
+  } catch (error) {
+    console.log(error);
   }
 };

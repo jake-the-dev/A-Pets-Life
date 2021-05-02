@@ -11,8 +11,9 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
 
 import useStyles from "./styles";
+
 // take memory from props and display the data into a Card format.
-const Memory = ({ memory }) => {
+const Memory = ({ memory, setCurrentId }) => {
   const classes = useStyles();
 
   // created date was going to be a fromNow() using moment - but I went against it after reading their docs.
@@ -28,7 +29,11 @@ const Memory = ({ memory }) => {
         <Typography variant="h6">{memory.creator}</Typography>
       </div>
       <div className={classes.overlay2}>
-        <Button style={{ color: "white" }} size="small" onClick={() => {}}>
+        <Button
+          style={{ color: "white" }}
+          size="small"
+          onClick={() => setCurrentId(memory._id)}
+        >
           <EditIcon fontSize="default" />
         </Button>
       </div>
@@ -36,8 +41,11 @@ const Memory = ({ memory }) => {
         <Typography variant="body2" color="textSecondary">
           {memory.tags.map((tag) => `#${tag} `)}
         </Typography>
+        <Typography className={classes.title} variant="h5" gutterBottom>
+          {memory.title}
+        </Typography>
         <CardContent>
-          <Typography className={classes.title} variant="h5" gutterBottom>
+          <Typography variant="h5" gutterBottom>
             {memory.message}
           </Typography>
         </CardContent>
