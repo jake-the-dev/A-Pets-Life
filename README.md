@@ -38,9 +38,14 @@ Redux is easier to understand and use with React Hooks now a thing.
 Redux creates a lot more files and folders but that's a small price when trying to understand state. 
 A thunk is a function that wraps an expression to delay its evaluation. (allows async await)
 Action creators create objects → objects are dispatched to the store → the store invokes reducers → reducers generate new state → listeners are notified of state updates.
+Creating CONSTANTS for strings as strings don't trigger error logs. ie Actions and reducers.
 </details>
 
 <details><summary>Out of Scope</summary>
+Add a list of Pets per user. When creating a memory select Pet to add. 
+Search
+Search on Pets
+Search on Tags
 Backend Testing. 
 Frontend Testing. 
 Redux Testing. 
