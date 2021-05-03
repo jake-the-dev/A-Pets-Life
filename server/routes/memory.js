@@ -11,7 +11,7 @@ const router = express.Router();
 
 router.get("/", getCollection);
 router.post("/", createMemory);
-router.patch("/id", updateMemory);
-router.delete("/id", deleteMemory);
+router.patch("/:id", updateMemory);
+router.delete("/:id", deleteMemory);
 
 export default router;

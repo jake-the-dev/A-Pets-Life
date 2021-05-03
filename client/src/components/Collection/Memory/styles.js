@@ -5,7 +5,7 @@ export default makeStyles({
     height: 0,
     paddingTop: "56.25%",
     backgroundColor: "rgba(0, 0, 0, 0.5)",
-    backgroundBlendMode: "darken",
+    backgroundBlendMode: "Darken",
   },
   border: {
     border: "solid",
@@ -21,16 +21,16 @@ export default makeStyles({
     height: "100%",
     position: "relative",
   },
-  overlay: {
+  datestamp: {
     position: "absolute",
-    top: "20px",
+    top: "10px",
     left: "20px",
     color: "white",
   },
-  overlay2: {
+  icons: {
     position: "absolute",
-    top: "20px",
-    right: "20px",
+    top: "10px",
+    right: "10px",
     color: "white",
   },
   grid: {
@@ -39,7 +39,7 @@ export default makeStyles({
   details: {
     display: "flex",
     justifyContent: "space-between",
-    margin: "20px",
+    margin: "10px 20px",
   },
   title: {
     padding: "0 16px",

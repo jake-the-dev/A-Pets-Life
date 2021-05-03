@@ -6,6 +6,8 @@ import { useSelector } from "react-redux"; // A hook to access the redux store's
 // import ImageIcon from "@material-ui/icons/Image";
 
 import useStyles from "./styles";
+import SaveIcon from "@material-ui/icons/Save";
+import ClearIcon from "@material-ui/icons/Clear";
 import { createMemory, updateMemory } from "../../actions/collection";
 
 const Form = ({ currentId, setCurrentId }) => {
@@ -62,8 +64,8 @@ const Form = ({ currentId, setCurrentId }) => {
   return (
     <Paper className={classes.paper}>
       <form
-        autoComplete="off"
-        noValidate
+        autoComplete="off" // disable autocomplete functionality.
+        noValidate // don't validate on submit.
         className={`${classes.root} ${classes.form}`}
         onSubmit={handleSubmit}
       >
@@ -72,7 +74,7 @@ const Form = ({ currentId, setCurrentId }) => {
         </Typography>
         <TextField
           name="creator"
-          variant="outlined"
+          // variant="outlined"
           label="Creator"
           fullWidth
           value={memoryData.creator}
@@ -82,7 +84,7 @@ const Form = ({ currentId, setCurrentId }) => {
         />
         <TextField
           name="title"
-          variant="outlined"
+          // variant="outlined"
           label="Title"
           fullWidth
           value={memoryData.title}
@@ -92,7 +94,7 @@ const Form = ({ currentId, setCurrentId }) => {
         />
         <TextField
           name="message"
-          variant="outlined"
+          // variant="outlined"
           label="Message"
           fullWidth
           value={memoryData.message}
@@ -102,7 +104,7 @@ const Form = ({ currentId, setCurrentId }) => {
         />
         <TextField
           name="tags"
-          variant="outlined"
+          // variant="outlined"
           label="Tags"
           fullWidth
           value={memoryData.tags}
@@ -118,8 +120,8 @@ const Form = ({ currentId, setCurrentId }) => {
             name="selectedFile"
             type="file"
             multiple={false}
-            onDone={({ selectedImage }) =>
-              setMemoryData({ ...memoryData, selectedFile: selectedImage })
+            onDone={({ base64 }) =>
+              setMemoryData({ ...memoryData, selectedFile: base64 })
             }
           />
         </div>
@@ -130,15 +132,17 @@ const Form = ({ currentId, setCurrentId }) => {
           size="large"
           type="submit"
           fullWidth
+          startIcon={<SaveIcon />}
         >
           Submit
         </Button>
         <Button
-          variant="contained"
+          variant="outlined"
           color="secondary"
           size="small"
           onClick={clear}
           fullWidth
+          startIcon={<ClearIcon />}
         >
           Clear
         </Button>
