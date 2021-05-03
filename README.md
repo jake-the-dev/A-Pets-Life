@@ -6,21 +6,30 @@ Log a recollection of memories from your Pet's life.
   <img src="https://img.shields.io/badge/Express.js-000000?logo=express&logoColor=white" />
   <img src="https://img.shields.io/badge/React-20232A?logo=react&logoColor=61DAFB" />
   <img src="https://img.shields.io/badge/Node.js-43853D?logo=node.js&logoColor=white" />
-Redux
-Thunk
-Material UI
-Axios
+  <img src="https://img.shields.io/badge/Redux-593D88?logo=redux&logoColor=white" />
+  <img src="https://img.shields.io/badge/Material--UI-0081CB?logo=material-ui&logoColor=white" />
+  <img src="https://img.shields.io/badge/Heroku-430098?logo=heroku&logoColor=white" />
+  <img src="https://img.shields.io/badge/Netlify-00C7B7?logo=netlify&logoColor=white" />
 
+<details><summary>Requirements</summary>
+A Backend
+CRUD
+Authentication
+Include Wireframes
+Clean JSX
+Hosted
+Pushed to Github
+Readme
+</details>
 
-<details><summary>Plan of Attack</summary>
+<details><summary>Wireframes</summary>
 Todo
 </details>
 
-
-
-<details><summary>What does this project answer?</summary>
+<details><summary>What does the project answer?</summary>
 Folder structure - from many source codes I've seen before I see so many folders that I haven't seen in react. I wanted to expand where possible to understand large folder structures. 
 Redux - 1. New Job uses it. 2. State management as I struggled with understanding the hierarchy of react state and having just one global Redux Store simplifies it greatly. 
+Everyone loves pets.
 </details>
 
 <details><summary>Learned along the way</summary>
@@ -51,6 +60,8 @@ actions:
 reducers: 
 styles.js files: For MaterialUI's { makeStyles } theming. 
 constants - used to eliminate any "strings" being hardcoded. 
+Auth: contains everything for the authentication form
+Procfile: required for Heroku
 </details>
 
 <details><summary>Out of Scope</summary>
@@ -69,6 +80,16 @@ When changing to sign in mode set email with {!isSignup && autoFocus}
 Memory date stamp isn't consistent with date created. 
 </details>
 
-Backend: 
+<details><summary>Installation</summary>
+Server: 
+Node:
+npm install
+npm start
+Client:
+npm install 
+npm audit fix --force
+npm start
 Heroku: 
 heroku logs --tail
+
+</details>
