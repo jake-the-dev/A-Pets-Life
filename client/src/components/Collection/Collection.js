@@ -18,7 +18,7 @@ const Collection = ({ setCurrentId }) => {
   ) : (
     <Grid className={classes.container} container alignitems="stretch">
       {collection.map((memory) => (
-        <Grid key={memory._id} item xs={12} sm={6}>
+        <Grid key={memory._id} item xs={12} sm={12} md={6}>
           <Memory memory={memory} setCurrentId={setCurrentId} />
         </Grid>
       ))}

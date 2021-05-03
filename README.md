@@ -16,13 +16,11 @@ Axios
 Todo
 </details>
 
-<details><summary>Understanding Folder Structure</summary>
-actions: 
-api: contains axios middleware. \
-assets: for images etc
-components: for react components. 
-reducers:
-styles.js files: For MaterialUI's makeStyles theming. 
+
+
+<details><summary>What does this project answer?</summary>
+Folder structure - from many source codes I've seen before I see so many folders that I haven't seen in react. I wanted to expand where possible to understand large folder structures. 
+Redux - 1. New Job uses it. 2. State management as I struggled with understanding the hierarchy of react state and having just one global Redux Store simplifies it greatly. 
 </details>
 
 <details><summary>Learned along the way</summary>
@@ -30,6 +28,8 @@ Only a lot so far.
 dotenv files for secure credentials
 MondoDB Atlas and Compass are both the same for viewing db data. 
 router.get('/', (req,res)) vs router.route("/").get((req, res)
+You have to use CORS before you specify routes. 
+app.use("/") has to be last otherwise it'll be the default. Can't access "/memory"
 Todo tree from the marketplace
 The precision of capitalisation of db fields. Couple hours of frustration there.
 That I don't really care for Bootstrap / react-bootstrap's jsx implementation.
@@ -39,6 +39,17 @@ Redux creates a lot more files and folders but that's a small price when trying 
 A thunk is a function that wraps an expression to delay its evaluation. (allows async await)
 Action creators create objects → objects are dispatched to the store → the store invokes reducers → reducers generate new state → listeners are notified of state updates.
 Creating CONSTANTS for strings as strings don't trigger error logs. ie Actions and reducers.
+Dynamic Titles with JSX: {currentId ? "Edit" : "Create"} a Memory
+</details>
+
+<details><summary>Understanding Folder Structure</summary>
+assets: for images etc
+components: for react components. 
+api: contains axios middleware. 
+actions: 
+reducers: 
+styles.js files: For MaterialUI's { makeStyles } theming. 
+constants - used to eliminate any "strings" being hardcoded. 
 </details>
 
 <details><summary>Out of Scope</summary>
@@ -49,4 +60,13 @@ Search on Tags
 Backend Testing. 
 Frontend Testing. 
 Redux Testing. 
+Custom upload image button. Add label for component rather than an input.
 </details>
+
+<details><summary>Bugs</summary>
+Memory date stamp isn't consistent with date created. 
+</details>
+
+Backend: 
+Heroku: 
+heroku logs --tail
