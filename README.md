@@ -39,7 +39,8 @@ Redux creates a lot more files and folders but that's a small price when trying 
 A thunk is a function that wraps an expression to delay its evaluation. (allows async await)
 Action creators create objects → objects are dispatched to the store → the store invokes reducers → reducers generate new state → listeners are notified of state updates.
 Creating CONSTANTS for strings as strings don't trigger error logs. ie Actions and reducers.
-Dynamic Titles with JSX: {currentId ? "Edit" : "Create"} a Memory
+Dynamic Titles with ternary operators inside JSX: {currentId ? "Edit" : "Create"} a Memory
+Using ternary operators to create 2 components in 1 field. 
 </details>
 
 <details><summary>Understanding Folder Structure</summary>
@@ -61,6 +62,7 @@ Backend Testing.
 Frontend Testing. 
 Redux Testing. 
 Custom upload image button. Add label for component rather than an input.
+When changing to sign in mode set email with {!isSignup && autoFocus}
 </details>
 
 <details><summary>Bugs</summary>
