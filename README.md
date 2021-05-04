@@ -16,7 +16,8 @@ A Backend
 CRUD
 Authentication
 Include Wireframes
-Clean JSX
+Clean JSX (html)
+Clean CSS (Material UI makeStyles)
 Hosted Backend
 Hosted Frontend
 Pushed to Github

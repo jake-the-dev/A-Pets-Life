@@ -1,13 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Link, useHistory } from "react-router-dom";
-import {
-  AppBar,
-  Typography,
-  Toolbar,
-  Avatar,
-  Button,
-  Form,
-} from "@material-ui/core";
+import { Link, useHistory, useLocation } from "react-router-dom";
+import { AppBar, Typography, Toolbar, Avatar, Button } from "@material-ui/core";
 import { useDispatch } from "react-redux";
 import useStyles from "./styles";
 
@@ -17,8 +10,17 @@ const Navbar = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const history = useHistory();
+  const location = useLocation();
 
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
+
+  console.log(user);
+
+  useEffect(() => {
+    const token = user?.token;
+
+    setUser(JSON.parse(localStorage.getItem("profile")));
+  }, [location]); // when location (/auth to just /) changes update user
 
   const logout = () => {
     dispatch({ type: "LOGOUT" });
