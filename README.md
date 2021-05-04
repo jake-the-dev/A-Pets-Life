@@ -47,10 +47,13 @@ JSX Fragments as a parent to use multiple .
 Redux is easier to understand and use with React Hooks now a thing.
 Redux creates a lot more files and folders but that's a small price when trying to understand state. 
 A thunk is a function that wraps an expression to delay its evaluation. (allows async await)
+Redux Workflow: First we fill in the form, once filled in, we dispatch an action (signin) passing the formData and History, the action calls the post request api for some { data }, then dispatch an AUTH action.
 Action creators create objects → objects are dispatched to the store → the store invokes reducers → reducers generate new state → listeners are notified of state updates.
 Creating CONSTANTS for strings as strings don't trigger error logs. ie Actions and reducers.
 Dynamic Titles with ternary operators inside JSX: {currentId ? "Edit" : "Create"} a Memory
 Using ternary operators to create 2 components in 1 field. 
+Optional Chaining with ?. operator.
+Using the Chrome Application tab to monitor Local Storage Token
 </details>
 
 <details><summary>Understanding Folder Structure</summary>
@@ -67,10 +70,12 @@ Procfile: required for Heroku
 
 <details><summary>Out of Scope</summary>
 SweetAlerts2
+Google OAuth
 Filter: Show only user created memories. 
 Add a list of Pets per user. When creating a memory select Pet to add. 
 Filter: Show only created memories of Pet
 Each Pet added to memory has a Pet avatar with link to Pet bio. 
+Like functionality for memories. 
 Search
 Search on Pets
 Search on Tags

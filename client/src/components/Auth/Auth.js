@@ -56,7 +56,7 @@ const Auth = () => {
 
   const handleSwitchMode = () => {
     setIsSignup((prevIsSignup) => !prevIsSignup);
-    handleShowPassword(false);
+    setShowPassword(false);
   };
 
   return (
@@ -75,14 +75,14 @@ const Auth = () => {
             {isSignup && (
               <>
                 <AuthInput
-                  name="firstname"
+                  name="firstName"
                   label="First Name"
                   handleChange={handleChange}
                   autoFocus
                   half
                 />
                 <AuthInput
-                  name="lastname"
+                  name="lastName"
                   label="Last Name"
                   handleChange={handleChange}
                   half

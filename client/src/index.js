@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux"; // provided keeps track of store (global state) and access it from anywhere.
 import { createStore, applyMiddleware, compose } from "redux";
-import thunk from "redux-thunk"; // redux middleware required for async actions
+import thunk from "redux-thunk"; // redux middleware required for redux async actions
 
 import { reducers } from "./reducers";
 import App from "./App";
