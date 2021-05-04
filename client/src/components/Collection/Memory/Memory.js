@@ -5,6 +5,7 @@ import {
   CardMedia,
   Button,
   Typography,
+  IconButton,
 } from "@material-ui/core";
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
@@ -16,6 +17,7 @@ import { deleteMemory } from "../../../actions/collection";
 const Memory = ({ memory, setCurrentId }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
+  const user = JSON.parse(localStorage.getItem("profile"));
 
   // created date was going to be a fromNow() using moment - but I went against it after reading their docs.
 
@@ -27,27 +29,30 @@ const Memory = ({ memory, setCurrentId }) => {
         title={memory.title}
       />
       <div className={classes.datestamp}>
-        <Typography variant="h6">{memory.creator}</Typography>
+        <Typography variant="h6">{memory.name}</Typography>
         <Typography variant="caption">
           {new Date(memory.createdAt).toLocaleString()}
         </Typography>
       </div>
-      <div className={classes.icons}>
-        <Button
-          style={{ color: "white" }}
-          size="small"
-          onClick={() => setCurrentId(memory._id)}
-        >
-          <EditIcon fontSize="small" />
-        </Button>
-        <Button
-          style={{ color: "white" }}
-          size="small"
-          onClick={() => dispatch(deleteMemory(memory._id))}
-        >
-          <DeleteIcon fontSize="small" />
-        </Button>
-      </div>
+      {/* {console.log("URId: ", user.result)};{console.log("Mc: ", memory)} */}
+      {user?.result?._id === memory?.creator && (
+        <div className={classes.icons}>
+          <IconButton
+            style={{ color: "white" }}
+            size="small"
+            onClick={() => setCurrentId(memory._id)}
+          >
+            <EditIcon fontSize="small" />
+          </IconButton>
+          <IconButton
+            style={{ color: "white" }}
+            size="small"
+            onClick={() => dispatch(deleteMemory(memory._id))}
+          >
+            <DeleteIcon fontSize="small" />
+          </IconButton>
+        </div>
+      )}
       <div className={classes.details}>
         <Typography variant="body2" color="textSecondary">
           {memory.tags.map((tag) => `#${tag} `)}

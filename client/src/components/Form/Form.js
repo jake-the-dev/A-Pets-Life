@@ -12,7 +12,6 @@ import { createMemory, updateMemory } from "../../actions/collection";
 
 const Form = ({ currentId, setCurrentId }) => {
   const [memoryData, setMemoryData] = useState({
-    creator: "",
     title: "",
     message: "",
     tags: "",
@@ -27,11 +26,22 @@ const Form = ({ currentId, setCurrentId }) => {
   );
   const classes = useStyles();
   const dispatch = useDispatch();
+  const user = JSON.parse(localStorage.getItem("profile"));
 
   // when the memory changes setMemoryData state becomes current memory data.
   useEffect(() => {
     if (memory) setMemoryData(memory);
   }, [memory]);
+
+  const clear = () => {
+    setCurrentId(null);
+    setMemoryData({
+      title: "",
+      message: "",
+      tags: "",
+      selectedFile: "",
+    });
+  };
 
   // take the form data and trigger a dispatch to the POST api
   const handleSubmit = (event) => {
@@ -39,25 +49,32 @@ const Form = ({ currentId, setCurrentId }) => {
 
     // if form data is from the edit memory option then update that id's data.
     // else create a new memory
-    if (currentId) {
-      dispatch(updateMemory(currentId, memoryData));
+    // update: add the user to the state automatically instead of manually.
+    if (currentId === null) {
+      // dispatch(createMemory(memoryData));
+      dispatch(createMemory({ ...memoryData, name: user?.result?.name }));
+      console.log("created new memory");
       clear();
     } else {
-      dispatch(createMemory(memoryData));
+      // dispatch(updateMemory(currentId, memoryData));
+      dispatch(
+        updateMemory(currentId, { ...memoryData, name: user?.result?.name })
+      );
+      console.log("Updated memory");
       clear();
     }
   };
 
-  const clear = () => {
-    setCurrentId(null);
-    setMemoryData({
-      creator: "",
-      title: "",
-      message: "",
-      tags: "",
-      selectedFile: "",
-    });
-  };
+  // if not signed in, don't show the create a memory form.
+  if (!user?.result?.name) {
+    return (
+      <Paper className={classes.paper}>
+        <Typography variant="h6" align="center">
+          Sign in to get started!
+        </Typography>
+      </Paper>
+    );
+  }
 
   // for each field use a spread operator of the state so the data will persist on change while only changing only last property of specific field.
   // still need to figure out how to upload images from local storage. Done
@@ -72,16 +89,6 @@ const Form = ({ currentId, setCurrentId }) => {
         <Typography variant="h6">
           {currentId ? "Edit" : "Create"} a Memory
         </Typography>
-        <TextField
-          name="creator"
-          variant="outlined"
-          label="Creator"
-          fullWidth
-          value={memoryData.creator}
-          onChange={(event) =>
-            setMemoryData({ ...memoryData, creator: event.target.value })
-          }
-        />
         <TextField
           name="title"
           variant="outlined"

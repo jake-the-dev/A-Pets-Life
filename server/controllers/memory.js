@@ -33,7 +33,11 @@ export const getMemory = async (req, res) => {
 export const createMemory = async (req, res) => {
   const memory = req.body;
 
-  const newMemory = new MemoryMessage(memory);
+  const newMemory = new MemoryMessage({
+    ...memory,
+    creator: req.userId,
+    createdAt: new Date().toISOString(),
+  });
 
   try {
     await newMemory.save();
@@ -53,7 +57,7 @@ export const updateMemory = async (req, res) => {
 
   // check if _id is a valid mongoose object
   if (!mongoose.Types.ObjectId.isValid(_id))
-    return res.status(404).send(`That ID does not exist`);
+    return res.status(404).send(`That ID does not exist to update`);
 
   const updatedMemory = await MemoryMessage.findByIdAndUpdate(
     _id,
@@ -72,7 +76,7 @@ export const deleteMemory = async (req, res) => {
   const { id } = req.params;
 
   if (!mongoose.Types.ObjectId.isValid(id))
-    return res.status(404).send(`That ID does not exist`);
+    return res.status(404).send(`That ID does not exist to delete`);
 
   await MemoryMessage.findByIdAndDelete(id);
 

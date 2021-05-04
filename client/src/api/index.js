@@ -9,6 +9,19 @@ const TestAPI = "http://localhost:5000";
 
 const API = axios.create({ baseURL: TestAPI });
 
+// Interceptors
+// You can intercept requests or responses before they are handled by 'then' or 'catch'.
+// token has to start with "Bearer"
+API.interceptors.request.use((req) => {
+  if (localStorage.getItem("profile")) {
+    req.headers.Authorization = `Bearer ${
+      JSON.parse(localStorage.getItem("profile")).token
+    }`;
+  }
+
+  return req;
+});
+
 export const fetchCollection = () => API.get("/memory");
 export const createMemory = (newMemory) => API.post("/memory", newMemory);
 export const updateMemory = (id, updatedMemory) =>
