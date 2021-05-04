@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom"; //The useHistory hook gives you access to the history instance that you may use to navigate.
+import { signin, signup } from "../../actions/auth";
 import {
   Avatar,
   Button,
@@ -9,16 +12,44 @@ import {
 } from "@material-ui/core";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import useStyles from "./AuthStyles";
-import AuthInput from "./AuthInput";
+import AuthInput from "./AuthInput"; // custom component to reduce clutter inside of Auth.js
+
+const initialFormState = {
+  firstName: "",
+  lastName: "",
+  email: "",
+  password: "",
+  confirmPassword: "",
+};
 
 const Auth = () => {
   const classes = useStyles();
-  const [showPassword, setShowPassword] = useState(false);
-  const [isSignup, setIsSignup] = useState(false);
+  const [showPassword, setShowPassword] = useState(false); // for toggle password button logic
+  const [isSignup, setIsSignup] = useState(false); // is the form the signup form?
+  const [formData, setFormData] = useState(initialFormState);
+  const dispatch = useDispatch();
+  const history = useHistory();
 
-  const handleSubmit = () => {};
+  // what authorisation takes place on ? signup : signin
+  const handleSubmit = (event) => {
+    event.preventDefault();
 
-  const handleChange = () => {};
+    if (isSignup) {
+      dispatch(signup(formData, history));
+    } else {
+      dispatch(signin(formData, history));
+    }
+
+    console.log(formData);
+  };
+
+  // populate formData
+  // update target with the value being input
+  // textfield names have to be the same as initialFormState names
+  const handleChange = (event) => {
+    setFormData({ ...formData, [event.target.name]: event.target.value });
+    // console.log(event.target.value);
+  };
 
   const handleShowPassword = () =>
     setShowPassword((prevShowPassword) => !prevShowPassword);
@@ -35,7 +66,11 @@ const Auth = () => {
           <LockOutlinedIcon />
         </Avatar>
         <Typography variant="h5">{isSignup ? `Sign Up` : `Sign In`}</Typography>
-        <form className={classes.form} onSubmit={handleSubmit}>
+        <form
+          className={classes.form}
+          autoComplete="off"
+          onSubmit={handleSubmit}
+        >
           <Grid container spacing={2}>
             {isSignup && (
               <>
@@ -99,8 +134,8 @@ const Auth = () => {
             <Grid item>
               <Button onClick={handleSwitchMode}>
                 {isSignup
-                  ? "Already have an account? Sign In!"
-                  : "Don't have an account? Sign Up!"}
+                  ? "Already signed up? Sign In"
+                  : "New to A Pets Life? Sign Up"}
               </Button>
             </Grid>
           </Grid>

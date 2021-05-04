@@ -17,9 +17,10 @@ CRUD
 Authentication
 Include Wireframes
 Clean JSX
-Hosted
+Hosted Backend
+Hosted Frontend
 Pushed to Github
-Readme
+Readme file 
 </details>
 
 <details><summary>Wireframes</summary>
@@ -65,7 +66,11 @@ Procfile: required for Heroku
 </details>
 
 <details><summary>Out of Scope</summary>
+SweetAlerts2
+Filter: Show only user created memories. 
 Add a list of Pets per user. When creating a memory select Pet to add. 
+Filter: Show only created memories of Pet
+Each Pet added to memory has a Pet avatar with link to Pet bio. 
 Search
 Search on Pets
 Search on Tags
@@ -78,6 +83,8 @@ When changing to sign in mode set email with {!isSignup && autoFocus}
 
 <details><summary>Bugs</summary>
 Memory date stamp isn't consistent with date created. 
+Password visibility is different between signin and signup. 
+autofill active even though autoComplete="off"
 </details>
 
 <details><summary>Installation</summary>
@@ -85,10 +92,12 @@ Server:
 Node:
 npm install
 npm start
+
 Client:
 npm install 
 npm audit fix --force
 npm start
+
 Heroku: 
 heroku logs --tail
 
