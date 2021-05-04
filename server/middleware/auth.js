@@ -6,7 +6,7 @@ import jwt from "jsonwebtoken";
 // (next): do something then move onto the next thing
 const auth = async (req, res, next) => {
   try {
-    // get token at [1] position
+    // tokens are stored at [1] position of the request header.
     const token = req.headers.authorization.split(" ")[1];
 
     let tokenData;
@@ -14,12 +14,13 @@ const auth = async (req, res, next) => {
     if (token) {
       tokenData = jwt.verify(token, "secret"); // provides username and Id.
 
-      req.userId = tokenData?.id; // optional chaining: this may or may not have data
+      req.userId = tokenData?.id; // optional chaining: tokenData may or may not have data
     }
 
     next();
   } catch (error) {
     console.log(error);
+    console.log("Middleware error");
   }
 };
 

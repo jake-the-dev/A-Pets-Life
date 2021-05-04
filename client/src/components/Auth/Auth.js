@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom"; //The useHistory hook gives you access to the history instance that you may use to navigate.
-import { signin, signup } from "../../actions/auth";
 import {
   Avatar,
   Button,
@@ -11,8 +10,9 @@ import {
   Container,
 } from "@material-ui/core";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
-import useStyles from "./AuthStyles";
+import useStyles from "./styles";
 import AuthInput from "./AuthInput"; // custom component to reduce clutter inside of Auth.js
+import { signin, signup } from "../../actions/auth";
 
 const initialFormState = {
   firstName: "",
@@ -33,18 +33,16 @@ const Auth = () => {
   // what authorisation takes place on ? signup : signin
   const handleSubmit = (event) => {
     event.preventDefault();
+    console.log(formData);
 
     if (isSignup) {
       dispatch(signup(formData, history));
     } else {
       dispatch(signin(formData, history));
     }
-
-    console.log(formData);
   };
 
-  // populate formData
-  // update target with the value being input
+  // populate formData with the value being input
   // textfield names have to be the same as initialFormState names
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
@@ -89,22 +87,12 @@ const Auth = () => {
                 />
               </>
             )}
-            {isSignup ? (
-              <AuthInput
-                name="email"
-                label="Email Address"
-                handleChange={handleChange}
-                type="email"
-              />
-            ) : (
-              <AuthInput
-                name="email"
-                label="Email Address"
-                handleChange={handleChange}
-                type="email"
-                autoFocus
-              />
-            )}
+            <AuthInput
+              name="email"
+              label="Email Address"
+              handleChange={handleChange}
+              type="email"
+            />
             <AuthInput
               name="password"
               label="Password"
@@ -129,6 +117,15 @@ const Auth = () => {
             className={classes.submit}
           >
             {isSignup ? "Sign Up" : "Sign In"}
+          </Button>
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.googleButton}
+          >
+            Sign in with Google (...soon)
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
