@@ -66,13 +66,14 @@ const Navbar = () => {
         className={classes.menuButton}
         color="inherit"
         aria-label="menu"
+        component={Link}
+        to="/"
       >
-        <PetsIcon />
+        <PetsIcon style={{ fontSize: 40 }} />
       </IconButton>
       <div className={classes.brandContainer}>
         <Typography className={classes.heading} variant="h2" align="center">
           A PETS LIFE
-          <PetsIcon />
         </Typography>
       </div>
       <Toolbar className={classes.toolbar}>
