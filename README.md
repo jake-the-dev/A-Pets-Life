@@ -70,6 +70,7 @@ Procfile: required for Heroku
 </details>
 
 <details><summary>Out of Scope</summary>
+Landing Page. 
 SweetAlerts2
 Google OAuth
 Filter: Show only user created memories. 
@@ -84,13 +85,15 @@ Backend Testing.
 Frontend Testing. 
 Redux Testing. 
 Custom upload image button. Add label for component rather than an input.
-When changing to sign in mode set email with {!isSignup && autoFocus}
 </details>
 
 <details><summary>Bugs</summary>
 Memory date stamp isn't consistent with date created. 
 Password visibility is different between signin and signup. 
 autofill active even though autoComplete="off"
+When changing to sign in mode email isn't focused {!isSignup && autoFocus}. tried, failed. 
+Tabbing through the signup form focuses on the visibility icon. 
+
 </details>
 
 <details><summary>Installation</summary>

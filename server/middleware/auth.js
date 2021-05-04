@@ -6,6 +6,7 @@ import jwt from "jsonwebtoken";
 // (next): do something then move onto the next thing
 const auth = async (req, res, next) => {
   try {
+    // console.log(req.headers);
     // tokens are stored at [1] position of the request header.
     const token = req.headers.authorization.split(" ")[1];
 
