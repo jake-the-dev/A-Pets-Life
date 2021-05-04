@@ -5,6 +5,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 
 import memoryRoutes from "./routes/memory.js";
+import userRoutes from "./routes/user.js";
 
 const app = express();
 dotenv.config();
@@ -14,10 +15,11 @@ app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
 
 app.use("/memory", memoryRoutes);
+app.use("/user", userRoutes);
 
-app.use("/", (req, res) => {
-  res.send(`Welcome to the Backend`);
-});
+// app.use("/", (req, res) => {
+//   res.send(`Welcome to the Backend`);
+// });
 
 const ATLAS_CONNECTION = process.env.ATLAS_CONNECTION;
 const PORT = process.env.PORT || 5000;

@@ -5,7 +5,7 @@ import { FETCH_ALL, CREATE, UPDATE, DELETE } from "../constants/actionTypes";
 import * as api from "../api"; // so axios can use api.fetchCollection
 
 //action creators
-// it takes time to retrive the data, so we use thunk for async functionality
+// it takes time to retrive the data, so we use Redux Thunk for async functionality
 export const getCollection = () => async (dispatch) => {
   try {
     const { data } = await api.fetchCollection(); // this is creating a get request to the api

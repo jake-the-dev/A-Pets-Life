@@ -74,7 +74,7 @@ const Form = ({ currentId, setCurrentId }) => {
         </Typography>
         <TextField
           name="creator"
-          // variant="outlined"
+          variant="outlined"
           label="Creator"
           fullWidth
           value={memoryData.creator}
@@ -84,7 +84,7 @@ const Form = ({ currentId, setCurrentId }) => {
         />
         <TextField
           name="title"
-          // variant="outlined"
+          variant="outlined"
           label="Title"
           fullWidth
           value={memoryData.title}
@@ -94,7 +94,7 @@ const Form = ({ currentId, setCurrentId }) => {
         />
         <TextField
           name="message"
-          // variant="outlined"
+          variant="outlined"
           label="Message"
           fullWidth
           value={memoryData.message}
@@ -104,7 +104,7 @@ const Form = ({ currentId, setCurrentId }) => {
         />
         <TextField
           name="tags"
-          // variant="outlined"
+          variant="outlined"
           label="Tags"
           fullWidth
           value={memoryData.tags}
