@@ -12,6 +12,7 @@ import EditIcon from "@material-ui/icons/Edit";
 import useStyles from "./styles";
 import { useDispatch } from "react-redux";
 import { deleteMemory } from "../../../actions/collection";
+import { format } from "date-fns";
 
 // take memory from props and display the data into a Card format.
 const Memory = ({ memory, setCurrentId }) => {
@@ -31,7 +32,8 @@ const Memory = ({ memory, setCurrentId }) => {
       <div className={classes.datestamp}>
         <Typography variant="h6">{memory.name}</Typography>
         <Typography variant="caption">
-          {new Date(memory.createdAt).toLocaleString()}
+          {/* {new Date(memory.createdAt).toLocaleString()} */}
+          {format(new Date(), "yyyy-MM-dd")}
         </Typography>
       </div>
       {/* {console.log("URId: ", user.result)};{console.log("Mc: ", memory)} */}
