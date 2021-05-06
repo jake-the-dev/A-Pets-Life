@@ -73,7 +73,7 @@ const Navbar = () => {
       </IconButton>
       <div className={classes.brandContainer}>
         <Typography className={classes.heading} variant="h2" align="center">
-          A PETS LIFE
+          Pet-stagram
         </Typography>
       </div>
       <Toolbar className={classes.toolbar}>
