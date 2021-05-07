@@ -76,7 +76,7 @@ Log a recollection of memories from your Pet's life.
 * Procfile: required for Heroku
 </details>
 
-<details><summary>~~Out of Scope~~ Feature Requests</summary>
+<details><summary>Feature Requests</summary>
 
 * Landing Page. 
 * SweetAlerts2
@@ -94,7 +94,7 @@ Log a recollection of memories from your Pet's life.
 * Custom upload image button. Add label for component rather than an input.
 </details>
 
-<details><summary>~~Bugs~~ Easter Eggs</summary>
+<details><summary>Bugs</summary>
 Memory date stamp isn't consistent with date created. 
 Password visibility is different between signin and signup. 
 autofill active even though autoComplete="off"
@@ -147,13 +147,14 @@ Keystrokes : 14,009
 ### End Result: 
 46.7 Hours to make a project that should only take 2 hours. 
 
+### Am I proud of it? 
+... no. 
 
 ## What next? 
-1. Start from scratch with:
+### Start from scratch with:
 - React Native
-- TDD
 - Mobile First
-
-2. React Context instead of Redux.
+- TDD
+- React Context instead of Redux.
 
 </details>
