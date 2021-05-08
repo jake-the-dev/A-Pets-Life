@@ -22,7 +22,7 @@ Log a recollection of memories from your Pet's life.
 - [x] Clean JSX (html)
 - [x] Clean CSS (Material UI makeStyles)
 - [x] Hosted Backend (Heroku)
-- [] Hosted Frontend (Netlify)
+- [ ] Hosted Frontend (Netlify)
 - [x] Pushed to Github
 - [x] Readme file 
 </details>
@@ -79,8 +79,9 @@ Log a recollection of memories from your Pet's life.
 <details><summary>Feature Requests</summary>
 
 * Landing Page. 
-* SweetAlerts2
+* SweetAlerts2 (at first, and then custom)
 * Google OAuth
+* React Masonry CSS (for tumblr styled layout instead of grid)
 * Filter: Show only user created memories. 
 * Add a list of Pets per user. When creating a memory select Pet to add. 
 * Filter: Show only created memories of Pet
@@ -130,25 +131,32 @@ heroku logs --tail
 - Can't edit something that's not that users. 
 ### Create Memory
 - create memory
+- name is automatically populated
+- tagging via mapping and splitting
+- date format from 'date-fns' instead of momentJs. 
 - Edit / delete . 
+### Logout
+- logout takes you back to signin. 
+- paw takes you home.
 
 ## How long did this take? 
-VS Code Extension "Code Time"
+From VS Code Extension "Code Time"
 ### A Pet's Life: 
 Code time : 22.2 hrs
 Keystrokes : 17,212
-### PetJournal (the original project name)
+### PetJournal (the original project name):
 Code time : 9.6 hrs
 Keystrokes : 9,454
-### ClockInClockOut: 
+### ClockInClockOut (the first project): 
 Code time : 14.9 hrs
 Keystrokes : 14,009
 
 ### End Result: 
-46.7 Hours to make a project that should only take 2 hours. 
+46.7 Hours (A week of 9hour days) to make a project that would now only take about 3hours. 
 
 ### Am I proud of it? 
-... no. 
+... not in it's current state. 
+But I will be working on it to make it into something quite nice.  
 
 ## What next? 
 ### Start from scratch with:

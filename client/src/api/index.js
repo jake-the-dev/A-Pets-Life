@@ -5,7 +5,7 @@ import axios from "axios";
 // const url = "http://localhost:5000/memory";
 
 const TestAPI = "http://localhost:5000";
-// const HerokuAPI = "https://a-pets-life-server.herokuapp.com";
+const HerokuAPI = "https://a-pets-life-server.herokuapp.com";
 
 const API = axios.create({ baseURL: TestAPI });
 
